@@ -67,9 +67,29 @@ function addListenerHitbox(){
     });
 }
 
+
+// Criar a função para tocar a música
+function playMusic() {
+    // Criar um novo objeto de áudio
+    let audio = new Audio(".src/audios/beat-animada.mp3");
+
+    // Tentar iniciar a reprodução
+    let playPromise = audio.play();
+
+    if (playPromise !== undefined) {
+        playPromise.then(() => {
+            console.log("A música começou a tocar!");
+        }).catch(error => {
+            console.log("Erro ao tentar tocar a música:", error);
+        });
+    }
+}
+
+// Adicionar um evento de clique à página para tocar a música no primeiro clique
+document.body.addEventListener('click', playMusic, { once: true });
+
 function initialize (){
     moveEnemy();
-    playSound("beat-animada");
     setInterval(() => {
         if (parseInt(state.view.timeLeft.textContent) == 15){
             playSound("beat-tensa");
