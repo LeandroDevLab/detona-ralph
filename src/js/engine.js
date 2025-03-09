@@ -69,14 +69,13 @@ function addListenerHitbox(){
 
 function initialize (){
     moveEnemy();
-    addListenerHitbox()
-    playSound("beat-animada")
+    playSound("beat-animada");
     setInterval(() => {
         if (parseInt(state.view.timeLeft.textContent) == 15){
             playSound("beat-tensa");
         }
     }, 1000);
-
+    addListenerHitbox();
 }
 
 initialize();
